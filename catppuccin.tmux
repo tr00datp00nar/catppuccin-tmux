@@ -89,10 +89,10 @@ main() {
   readonly show_ncspot="#[fg=#a6d189,bg=default,nobold,nounderscore,noitalics] #[fg=#292c3c,bg=#a6d189] #(${PLUGIN_DIR}/scripts/ncspot.sh)"
 
   # Right column 1 by default shows the Window name.
-  local right_column1=$show_window
+  local right_column2=$show_window
 
   # Right column 2 by default shows the current Session name.
-  local right_column2=$show_session
+  local right_column3=$show_session
 
   # Window status by default shows the current directory basename.
   local window_status_format=$show_directory_in_window_status
@@ -101,7 +101,7 @@ main() {
   # NOTE: With the @catppuccin_window_tabs_enabled set to on, we're going to
   # update the right_column1 and the window_status_* variables.
   if [[ "${wt_enabled}" == "on" ]]; then
-    right_column1=$show_directory
+    right_column2=$show_directory
     window_status_format=$show_window_in_window_status
     window_status_current_format=$show_window_in_window_status_current
   fi
@@ -109,7 +109,7 @@ main() {
   # NOTE: With the @catppuccin_ncspot_enabled set to on, we're going to
   # update the right column1.
   if [[ "${ncspot_enabled}" == "on" ]]; then
-    right_column3=$show_ncspot
+    right_column1=$show_ncspot
     # set-option -gaq status-right $right_column3
     fi
 
