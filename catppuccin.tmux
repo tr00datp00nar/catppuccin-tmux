@@ -65,6 +65,11 @@ main() {
   wt_enabled="$(get_tmux_option "@catppuccin_window_tabs_enabled" "off")"
   readonly wt_enabled
 
+  # NOTE: Checking for the value of @catppuccin_ncspot_enabled
+  local ncspot_enabled
+  ncspot_enabled="$(get_tmux_option "@catppuccin_ncspot_enabled" "off")"
+  readonly ncspot_enabled
+
   # These variables are the defaults so that the setw and set calls are easier to parse.
   local show_directory
   readonly show_directory="#[fg=$thm_pink,bg=$thm_bg,nobold,nounderscore,noitalics]#[fg=$thm_bg,bg=$thm_pink,nobold,nounderscore,noitalics]  #[fg=$thm_fg,bg=$thm_gray] #{b:pane_current_path} #{?client_prefix,#[fg=$thm_red]"
@@ -80,6 +85,8 @@ main() {
   readonly show_window_in_window_status="#[fg=$thm_fg,bg=$thm_bg] #W #[fg=$thm_bg,bg=$thm_blue] #I#[fg=$thm_blue,bg=$thm_bg]#[fg=$thm_fg,bg=$thm_bg,nobold,nounderscore,noitalics] "
   local show_window_in_window_status_current
   readonly show_window_in_window_status_current="#[fg=$thm_fg,bg=$thm_gray] #W #[fg=$thm_bg,bg=$thm_orange] #I#[fg=$thm_orange,bg=$thm_bg]#[fg=$thm_fg,bg=$thm_bg,nobold,nounderscore,noitalics] "
+  local show_ncspot
+  readonly show_ncspot="#[fg=#a6d189,bg=default,nobold,nounderscore,noitalics] #[fg=#292c3c,bg=#a6d189] #(${PLUGIN_DIR}/scripts/ncspot.sh)"
 
   # Right column 1 by default shows the Window name.
   local right_column1=$show_window
@@ -99,9 +106,16 @@ main() {
     window_status_current_format=$show_window_in_window_status_current
   fi
 
+  # NOTE: With the @catppuccin_ncspot_enabled set to on, we're going to
+  # update the right column1.
+  if [[ "${ncspot_enabled}" == "on" ]]; then
+    right_column3=$show_ncspot
+    # set-option -gaq status-right $right_column3
+    fi
+
   set status-left ""
 
-  set status-right "${right_column1},${right_column2}"
+  set status-right "${right_column1},${right_column2},${right_column3}"
 
   setw window-status-format "${window_status_format}"
   setw window-status-current-format "${window_status_current_format}"
