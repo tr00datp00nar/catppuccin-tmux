@@ -40,7 +40,7 @@ main() {
 
   # status
   set status "on"
-  set status-bg "${thm_bg}"
+  set status-bg "default"
   set status-justify "left"
   set status-left-length "100"
   set status-right-length "100"
