@@ -86,7 +86,7 @@ main() {
   local show_window_in_window_status_current
   readonly show_window_in_window_status_current="#[fg=$thm_fg,bg=$thm_gray] #W #[fg=$thm_bg,bg=$thm_orange] #I#[fg=$thm_orange,bg=$thm_bg]#[fg=$thm_fg,bg=$thm_bg,nobold,nounderscore,noitalics] "
   local show_ncspot
-  readonly show_ncspot="#[fg=$thm_blue,bg=$thm_bg,nobold,nounderscore,noitalics] #[fg=$thm_blue,bg=$thm_bg,nobold,nounderscore,noitalics] #[fg=$thm_fg,bg=$thm_gray] #(${PLUGIN_DIR}/scripts/ncspot.sh)"
+  readonly show_ncspot="#[fg=$thm_blue,bg=$thm_bg,nobold,nounderscore,noitalics] #[fg=$thm_bg,bg=$thm_blue,nobold,nounderscore,noitalics] #[fg=$thm_fg,bg=$thm_gray] #(${PLUGIN_DIR}/scripts/ncspot.sh)"
 
   # Right column 1 by default shows the Window name.
   local right_column2=$show_window
