@@ -74,9 +74,9 @@ main() {
   local show_directory
   readonly show_directory="#[fg=$thm_pink,bg=$thm_bg,nobold,nounderscore,noitalics]#[fg=$thm_bg,bg=$thm_pink,nobold,nounderscore,noitalics]  #[fg=$thm_fg,bg=$thm_gray] #{b:pane_current_path} #{?client_prefix,#[fg=$thm_red]"
   local show_window
-  readonly show_window="#[fg=$thm_pink,bg=$thm_bg,nobold,nounderscore,noitalics]#[fg=$thm_bg,bg=$thm_pink,nobold,nounderscore,noitalics] #[fg=$thm_fg,bg=$thm_pink] #W #{?client_prefix,#[fg=$thm_red]"
+  readonly show_window="#[fg=$thm_pink,bg=$thm_bg,nobold,nounderscore,noitalics]#[fg=$thm_bg,bg=$thm_pink,nobold,nounderscore,noitalics] #[fg=$thm_bg,bg=$thm_pink] #W #{?client_prefix,#[fg=$thm_red]"
   local show_session
-  readonly show_session="#[fg=$thm_green]}#[bg=$thm_gray]#{?client_prefix,#[bg=$thm_red],#[bg=$thm_green]}#[fg=$thm_bg] #[fg=$thm_fg,bg=$thm_green] #S "
+  readonly show_session="#[fg=$thm_green]}#[bg=$thm_gray]#{?client_prefix,#[bg=$thm_red],#[bg=$thm_green]}#[fg=$thm_bg] #[fg=$thm_bg,bg=$thm_green] #S "
   local show_directory_in_window_status
   readonly show_directory_in_window_status="#[fg=$thm_bg,bg=$thm_blue] #I #[fg=$thm_fg,bg=$thm_gray] #{b:pane_current_path} "
   local show_directory_in_window_status_current
@@ -86,9 +86,9 @@ main() {
   local show_window_in_window_status_current
   readonly show_window_in_window_status_current="#[fg=$thm_fg,bg=$thm_gray] #W #[fg=$thm_bg,bg=$thm_orange] #I#[fg=$thm_orange,bg=$thm_bg]#[fg=$thm_fg,bg=$thm_bg,nobold,nounderscore,noitalics] "
   local show_ncspot_track_title
-  readonly show_ncspot_track_title="#[fg=$thm_blue,bg=$thm_bg,nobold,nounderscore,noitalics] #[fg=$thm_bg,bg=$thm_blue,nobold,nounderscore,noitalics] #[fg=$thm_fg,bg=$thm_blue] #(${PLUGIN_DIR}/scripts/get_track_title.sh)"
+  readonly show_ncspot_track_title="#[fg=$thm_blue,bg=$thm_bg,nobold,nounderscore,noitalics] #[fg=$thm_bg,bg=$thm_blue,nobold,nounderscore,noitalics] #[fg=$thm_bg,bg=$thm_blue] #(${PLUGIN_DIR}/scripts/get_track_title.sh)"
   local show_ncspot_artist
-  readonly show_ncspot_artist=" | #[fg=$thm_fg,bg=$thm_blue]#(${PLUGIN_DIR}/scripts/get_artist.sh)"
+  readonly show_ncspot_artist=" | #[fg=$thm_bg,bg=$thm_blue]#(${PLUGIN_DIR}/scripts/get_artist.sh)"
 
   # Right column 1 by default shows the Window name.
   local right_column3=$show_window
