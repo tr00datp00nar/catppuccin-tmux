@@ -85,23 +85,25 @@ main() {
   readonly show_window_in_window_status="#[fg=$thm_fg,bg=$thm_bg] #W #[fg=$thm_bg,bg=$thm_blue] #I#[fg=$thm_blue,bg=$thm_bg]#[fg=$thm_fg,bg=$thm_bg,nobold,nounderscore,noitalics] "
   local show_window_in_window_status_current
   readonly show_window_in_window_status_current="#[fg=$thm_fg,bg=$thm_gray] #W #[fg=$thm_bg,bg=$thm_orange] #I#[fg=$thm_orange,bg=$thm_bg]#[fg=$thm_fg,bg=$thm_bg,nobold,nounderscore,noitalics] "
-  local show_ncspot
-  readonly show_ncspot="#[fg=$thm_blue,bg=$thm_bg,nobold,nounderscore,noitalics] #[fg=$thm_bg,bg=$thm_blue,nobold,nounderscore,noitalics] #[fg=$thm_fg,bg=$thm_gray] #(${PLUGIN_DIR}/scripts/ncspot.sh)"
+  local show_ncspot_track_title
+  readonly show_ncspot_track_title="#[fg=$thm_blue,bg=$thm_bg,nobold,nounderscore,noitalics] #[fg=$thm_bg,bg=$thm_blue,nobold,nounderscore,noitalics] #[fg=$thm_fg,bg=$thm_gray] #(${PLUGIN_DIR}/scripts/get_track_title.sh)"
+  local show_ncspot_artist
+  readonly show_ncspot_artist="#[fg=$thm_blue,bg=$thm_bg,nobold,nounderscore,noitalics] #[fg=$thm_bg,bg=$thm_blue,nobold,nounderscore,noitalics] #[fg=$thm_fg,bg=$thm_gray] #(${PLUGIN_DIR}/scripts/get_artist.sh)"
 
   # Right column 1 by default shows the Window name.
-  local right_column2=$show_window
+  local right_column3=$show_window
 
   # Right column 2 by default shows the current Session name.
-  local right_column3=$show_session
+  local right_column4=$show_session
 
   # Window status by default shows the current directory basename.
   local window_status_format=$show_directory_in_window_status
   local window_status_current_format=$show_directory_in_window_status_current
 
   # NOTE: With the @catppuccin_window_tabs_enabled set to on, we're going to
-  # update the right_column2 and the window_status_* variables.
+  # update the right_column3 and the window_status_* variables.
   if [[ "${wt_enabled}" == "on" ]]; then
-    right_column2=$show_directory
+    right_column3=$show_directory
     window_status_format=$show_window_in_window_status
     window_status_current_format=$show_window_in_window_status_current
   fi
@@ -109,12 +111,13 @@ main() {
   # NOTE: With the @catppuccin_ncspot_enabled set to on, we're going to
   # update the right column1.
   if [[ "${ncspot_enabled}" == "on" ]]; then
-    right_column1=$show_ncspot
+    right_column1=$show_ncspot_track_title
+    right_column2=$show_ncspot_artist
     fi
 
   set status-left ""
 
-  set status-right "${right_column1} ${right_column2},${right_column3}"
+  set status-right "${right_column1},${right_column2},${right_column3},${right_column4}"
 
   setw window-status-format "${window_status_format}"
   setw window-status-current-format "${window_status_current_format}"

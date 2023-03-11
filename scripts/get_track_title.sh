@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-full_artist="$(playerctl --player=ncspot metadata -f "{{ artist }}")"
-artist=$(printf "%s" "$full_artist" | cut -d"," -f1)
-
 full_title="$(playerctl --player=ncspot metadata -f "{{ title }}")"
 
 # BUG:
@@ -14,11 +11,7 @@ full_title="$(playerctl --player=ncspot metadata -f "{{ title }}")"
 title=$(printf "%s" "$full_title" | cut -d"-" -f1 | cut -d"(" -f1)
 
 if [[ $(playerctl --player=ncspot metadata -f "{{status}}") =~ Playing ]]; then
-    cmd=$(playerctl --player=ncspot metadata -f "$title | $icon_artist $artist")
-elif [[ $(playerctl --player=ncspot metadata -f "{{status}}") =~ Paused ]]; then
-    printf "%s" "$icon_pause "
-else
-    printf "%s" "$icon_none "
+    cmd=$(playerctl --player=ncspot metadata -f "$title")
 fi
 
 printf "%s" "$cmd"
