@@ -86,7 +86,7 @@ main() {
   local show_window_in_window_status_current
   readonly show_window_in_window_status_current="#[fg=$thm_fg,bg=$thm_gray] #W #[fg=$thm_bg,bg=$thm_orange] #I#[fg=$thm_orange,bg=$thm_bg]#[fg=$thm_fg,bg=$thm_bg,nobold,nounderscore,noitalics] "
   local show_ncspot
-  readonly show_ncspot="#[fg=#a6d189,bg=default,nobold,nounderscore,noitalics] #[fg=#292c3c,bg=#a6d189] #(${PLUGIN_DIR}/scripts/ncspot.sh)"
+  readonly show_ncspot="#[fg=thm_fg,bg=thm_blue,nobold,nounderscore,noitalics] #[fg=thm_fg,bg=thm_bg] #(${PLUGIN_DIR}/scripts/ncspot.sh)"
 
   # Right column 1 by default shows the Window name.
   local right_column2=$show_window
@@ -114,7 +114,7 @@ main() {
 
   set status-left ""
 
-  set status-right "${right_column1}${right_column2},${right_column3}"
+  set status-right "${right_column1} ${right_column2},${right_column3}"
 
   setw window-status-format "${window_status_format}"
   setw window-status-current-format "${window_status_current_format}"
