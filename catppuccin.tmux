@@ -84,7 +84,7 @@ main() {
   readonly show_directory_in_window_status="#[fg=$thm_fg,bg=$thm_gray] #I #[fg=$thm_fg,bg=$thm_gray] #{b:pane_current_path} "
 
   local show_directory_in_window_status_current
-  readonly show_directory_in_window_status_current="#[fg=$thm_bg,bg=$thm_orange] #I #[fg=$thm_bg,bg=$thm_orange] #{b:pane_current_path} "
+  readonly show_directory_in_window_status_current="#[fg=$thm_orange,bg=$thm_bg,nobold,nounderscore,noitalics]#[fg=$thm_bg,bg=$thm_orange] #I #[fg=$thm_bg,bg=$thm_orange] #{b:pane_current_path} #[fg=$thm_orange,bg=$thm_bg,nobold,nounderscore,noitalics]"
 
   local show_window_in_window_status
   readonly show_window_in_window_status="#[fg=$thm_bg,bg=$thm_blue] #W #[fg=$thm_bg,bg=$thm_blue] #I#[fg=$thm_blue,bg=$thm_bg]#[fg=$thm_fg,bg=$thm_bg,nobold,nounderscore,noitalics] "
