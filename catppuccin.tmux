@@ -122,9 +122,9 @@ main() {
   local show_window_in_window_status_current
   readonly show_window_in_window_status_current="#[fg=$thm_bg,bg=$thm_orange] #W #[fg=$thm_bg,bg=$thm_orange] #I#[fg=$thm_orange,bg=$thm_bg]#[fg=$thm_fg,bg=$thm_bg,nobold,nounderscore,noitalics] "
   local show_ncspot_track_title
-  readonly show_ncspot_track_title="#[fg=$thm_blue,bg=$thm_bg,nobold,nounderscore,noitalics] #[fg=$thm_bg,bg=$thm_blue,nobold,nounderscore,noitalics] #[fg=$thm_bg,bg=$thm_blue] #(${PLUGIN_DIR}/scripts/get_track_title.sh)"
+  readonly show_ncspot_track_title="#[fg=$thm_green,bg=$thm_bg,nobold,nounderscore,noitalics] #[fg=$thm_bg,bg=$thm_green,nobold,nounderscore,noitalics] #[fg=$thm_bg,bg=$thm_green] #(${PLUGIN_DIR}/scripts/get_track_title.sh)"
   local show_ncspot_artist
-  readonly show_ncspot_artist="#[fg=$thm_bg,bg=$thm_blue,nobold,nounderscore,noitalics] #[fg=$thm_bg=$thm_blue]#(${PLUGIN_DIR}/scripts/get_artist.sh) #[fg=$thm_blue,bg=$thm_bg,nobold,nounderscore,noitalics]"
+  readonly show_ncspot_artist="#[fg=$thm_bg,bg=$thm_green,nobold,nounderscore,noitalics] #[fg=$thm_bg=$thm_green]#(${PLUGIN_DIR}/scripts/get_artist.sh) #[fg=$thm_green,bg=$thm_bg,nobold,nounderscore,noitalics]"
   local show_weather
   readonly show_weather="#[fg=$thm_yellow,bg=$thm_bg,nobold,nounderscore,noitalics]#[fg=$thm_gray,bg=$thm_yellow]#(cat $datafile) #[fg=$thm_yellow,bg=$thm_bg,nobold,nounderscore,noitalics]"
 
@@ -166,7 +166,7 @@ main() {
       time="%a %m/%d %I:%M %p ${timezone} "
     fi
     local show_time
-    readonly show_time="#[fg=$thm_cyan,bg=$thm_bg,nobold,nounderscore,noitalics]#[fg=$thm_gray,bg=$thm_cyan]$time#[fg=$thm_cyan,bg=$thm_bg,nobold,nounderscore,noitalics]"
+    readonly show_time="#[fg=$thm_blue,bg=$thm_bg,nobold,nounderscore,noitalics]#[fg=$thm_gray,bg=$thm_blue]$time#[fg=$thm_blue,bg=$thm_bg,nobold,nounderscore,noitalics]"
     right_column4=$show_time
   fi
 
