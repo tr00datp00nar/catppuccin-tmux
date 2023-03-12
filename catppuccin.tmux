@@ -117,10 +117,13 @@ main() {
   readonly show_command_in_window_status="#[fg=$thm_fg,bg=$thm_gray] #I #[fg=$thm_fg,bg=$thm_gray] #{b:pane_current_command} "
   local show_command_in_window_status_current
   readonly show_command_in_window_status_current="#[fg=$thm_orange,bg=$thm_bg,nobold,nounderscore,noitalics]#[fg=$thm_bg,bg=$thm_orange] #I #[fg=$thm_bg,bg=$thm_orange] #{b:pane_current_command} #[fg=$thm_orange,bg=$thm_bg,nobold,nounderscore,noitalics]"
+
   local show_window_in_window_status
-  readonly show_window_in_window_status="#[fg=$thm_fg,bg=$thm_gray] #W #[fg=$thm_fg,bg=$thm_gray] #I#[fg=$thm_gray,bg=$thm_bg]#[fg=$thm_fg,bg=$thm_bg,nobold,nounderscore,noitalics] "
+  readonly show_window_in_window_status="#[fg=$thm_gray,bg=$thm_bg,nobold,nounderscore,noitalics]#[fg=$thm_fg,bg=$thm_gray] #W #[fg=$thm_fg,bg=$thm_gray] #I#[fg=$thm_gray,bg=$thm_bg]#[fg=$thm_fg,bg=$thm_bg,nobold,nounderscore,noitalics] "
+
   local show_window_in_window_status_current
-  readonly show_window_in_window_status_current="#[fg=$thm_bg,bg=$thm_orange] #W #[fg=$thm_bg,bg=$thm_orange] #I#[fg=$thm_orange,bg=$thm_bg]#[fg=$thm_fg,bg=$thm_bg,nobold,nounderscore,noitalics] "
+  readonly show_window_in_window_status_current="#[fg=$thm_orange,bg=$thm_bg,nobold,nounderscore,noitalics]#[fg=$thm_bg,bg=$thm_orange] #W #[fg=$thm_bg,bg=$thm_orange] #I#[fg=$thm_orange,bg=$thm_bg]#[fg=$thm_fg,bg=$thm_bg,nobold,nounderscore,noitalics] "
+
   local show_ncspot_track_title
   readonly show_ncspot_track_title="#[fg=$thm_green,bg=$thm_bg,nobold,nounderscore,noitalics] #[fg=$thm_bg,bg=$thm_green,nobold,nounderscore,noitalics] #[fg=$thm_bg,bg=$thm_green] #(${PLUGIN_DIR}/scripts/get_track_title.sh)"
   local show_ncspot_artist
