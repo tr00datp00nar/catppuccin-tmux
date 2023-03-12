@@ -67,7 +67,7 @@ main() {
 
   # NOTE: Checking for the value of weather related vars
   local weather_enabled
-  weather_enabled="$(get_tmux_option "@catppuccin_weather_enabled" "off")"
+  weather_enabled="$(get_tmux_option "@catppuccin_weather_enabled" "on")"
   readonly weather_enabled
   local show_fahrenheit
   show_fahrenheit="$(get_tmux_option "@catppuccin_show_fahrenheit" true)"
@@ -83,7 +83,6 @@ main() {
     ${PLUGIN_DIR}/scripts/sleep_weather.sh $show_fahrenheit $show_location $fixed_location &
   fi
 
-  datafile=/tmp/.catppuccin-tmux-data
 
   # These variables are the defaults so that the setw and set calls are easier to parse.
   local show_directory
@@ -105,7 +104,8 @@ main() {
   local show_ncspot_artist
   readonly show_ncspot_artist="#[fg=$thm_bg,bg=$thm_blue,nobold,nounderscore,noitalics] #[fg=$thm_bg=$thm_blue]#(${PLUGIN_DIR}/scripts/get_artist.sh) #[fg=$thm_blue,bg=$thm_bg,nobold,nounderscore,noitalics]"
   local show_weather
-  readonly show_weather="#[fg=$thm_orange,bg=$thm_bg,nobold,nounderscore,noitalics]#[fg=thm_bg,bg=thm_orange]#(cat $datafile) #[fg=$thm_orange,bg=$thm_bg,nobold,nounderscore,noitalics]"
+  local datafile=/tmp/.catppuccin-tmux-data
+  readonly show_weather="#[fg=$thm_orange,bg=$thm_bg,nobold,nounderscore,noitalics]#[fg=thm_bg,bg=thm_orange]#(${PLUGIN_DIR}/scripts/sleep_weather.sh) #[fg=$thm_orange,bg=$thm_bg,nobold,nounderscore,noitalics]"
 
   # Right column 1 by default shows the current Session name.
   local left_column1=$show_session
@@ -126,9 +126,9 @@ main() {
   # NOTE: With the @catppuccin_weather_enabled set to on, we're going to
   # update the right_column3
   if [[ "${weather_enabled}" == "on" ]]; then
-    while [ ! -f $datafile ]; do
-      sleep 0.01
-    done
+    # while [ ! -f $datafile ]; do
+    #   sleep 0.01
+    # done
     right_column3=$show_weather
   fi
 
