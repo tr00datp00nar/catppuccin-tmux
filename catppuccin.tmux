@@ -104,8 +104,10 @@ main() {
   readonly show_ncspot_track_title="#[fg=$thm_blue,bg=$thm_bg,nobold,nounderscore,noitalics] #[fg=$thm_bg,bg=$thm_blue,nobold,nounderscore,noitalics] #[fg=$thm_bg,bg=$thm_blue] #(${PLUGIN_DIR}/scripts/get_track_title.sh)"
   local show_ncspot_artist
   readonly show_ncspot_artist="#[fg=$thm_bg,bg=$thm_blue,nobold,nounderscore,noitalics] #[fg=$thm_bg=$thm_blue]#(${PLUGIN_DIR}/scripts/get_artist.sh) #[fg=$thm_blue,bg=$thm_bg,nobold,nounderscore,noitalics]"
+  local forecast="#(cat $datafile)"
+  readonly forecast
   local show_weather
-  readonly show_weather="#[fg=$thm_orange,bg=$thm_bg,nobold,nounderscore,noitalics]#[fg=thm_bg,bg=thm_orange]#(cat $datafile) #[fg=$thm_orange,bg=$thm_bg,nobold,nounderscore,noitalics]"
+  readonly show_weather="#[fg=$thm_orange,bg=$thm_bg,nobold,nounderscore,noitalics]#[fg=thm_bg,bg=thm_orange]#($forecast) #[fg=$thm_orange,bg=$thm_bg,nobold,nounderscore,noitalics]"
 
   # Right column 1 by default shows the current Session name.
   local left_column1=$show_session
