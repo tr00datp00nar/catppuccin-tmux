@@ -154,23 +154,34 @@ main() {
   fi
 
     # NOTE: With the @catppuccin_show_time set to on, we're going to
-  # check the status of @catppuccin_military_time, and @catppuccin_day_month
-  if [[ "${time_enabled}" == "on" ]]; then
-    if $show_day_month && $show_military ; then # military time and dd/mm
-      time="%a %d/%m %R ${timezone} "
-    elif $show_military; then # only military time
-      time="%a %m/%d %R ${timezone} "
-    elif $show_day_month; then # only dd/mm
-      time="%a %d/%m %I:%M %p ${timezone} "
-    else
-      time="%a %m/%d %I:%M %p ${timezone} "
+    # check the status of @catppuccin_military_time, and @catppuccin_day_month
+    if [[ "${time_enabled}" == "on" ]]; then
+      if [[ "${show_timezone}" == true ]]; then
+        timezone="#(date +%Z)";;
+        if $show_day_month && $show_military ; then # military time and dd/mm
+          time="%a %d/%m %R ${timezone} "
+        elif $show_military; then # only military time
+          time="%a %m/%d %R ${timezone} "
+        elif $show_day_month; then # only dd/mm
+          time="%a %d/%m %I:%M %p ${timezone} "
+        else
+          time="%a %m/%d %I:%M %p ${timezone} "
+        fi
+      elif [[ "${show_timezone}" == false ]]; then
+        if $show_day_month && $show_military ; then # military time and dd/mm
+          time="%a %d/%m %R "
+        elif $show_military; then # only military time
+          time="%a %m/%d %R "
+        elif $show_day_month; then # only dd/mm
+          time="%a %d/%m %I:%M %p "
+        else
+          time="%a %m/%d %I:%M %p "
+        fi
+      fi
+      local show_time
+      readonly show_time="#[fg=$thm_blue,bg=$thm_bg,nobold,nounderscore,noitalics]#[fg=$thm_gray,bg=$thm_blue]$time#[fg=$thm_blue,bg=$thm_bg,nobold,nounderscore,noitalics]"
+      right_column4=$show_time
     fi
-  else
-    time="%a %m/%d %I:%M %p"
-    local show_time
-    readonly show_time="#[fg=$thm_blue,bg=$thm_bg,nobold,nounderscore,noitalics]#[fg=$thm_gray,bg=$thm_blue]$time#[fg=$thm_blue,bg=$thm_bg,nobold,nounderscore,noitalics]"
-    right_column4=$show_time
-  fi
 
   set status-left "${left_column1}${left_column2}"
 
