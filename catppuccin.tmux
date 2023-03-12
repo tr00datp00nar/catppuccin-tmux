@@ -87,8 +87,10 @@ main() {
   readonly show_military
   local show_day_month
   show_day_month="$(get_tmux_option "@catppuccin_show_day_month" "off")"
+  readonly show_day_month
   local show_timezone
   show_timezone="$(get_tmux_option "@catppuccin_show_timezone" false)"
+  readonly show_timezone
 
     # Set timezone unless hidden by configuration
   case $show_timezone in
