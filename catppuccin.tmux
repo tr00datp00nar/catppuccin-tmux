@@ -156,7 +156,7 @@ main() {
     # NOTE: With the @catppuccin_show_time set to on, we're going to
   # check the status of @catppuccin_military_time, and @catppuccin_day_month
   local show_time
-  readonly show_time="#[fg=$thm_teal,bg=$thm_bg,nobold,nounderscore,noitalics]#[fg=$thm_gray,bg=$thm_teal]$time #[fg=$thm_teal,bg=$thm_bg,nobold,nounderscore,noitalics]"
+  readonly show_time="#[fg=$thm_teal,bg=$thm_bg,nobold,nounderscore,noitalics]#[fg=$thm_gray,bg=$thm_teal]${time} #[fg=$thm_teal,bg=$thm_bg,nobold,nounderscore,noitalics]"
   if [[ "${time_enabled}" == "on" ]]; then
     if $show_day_month && $show_military ; then # military time and dd/mm
       time="%a %d/%m %R ${timezone} "
