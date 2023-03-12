@@ -107,7 +107,7 @@ main() {
   local forecast="#(cat $datafile)"
   readonly forecast
   local show_weather
-  readonly show_weather="#[fg=$thm_orange,bg=$thm_bg,nobold,nounderscore,noitalics]#[fg=thm_bg,bg=thm_orange]#($forecast) #[fg=$thm_orange,bg=$thm_bg,nobold,nounderscore,noitalics]"
+  readonly show_weather="#[fg=$thm_orange,bg=$thm_bg,nobold,nounderscore,noitalics]#[fg=thm_bg,bg=thm_orange]#(${forecast}) #[fg=$thm_orange,bg=$thm_bg,nobold,nounderscore,noitalics]"
 
   # Right column 1 by default shows the current Session name.
   local left_column1=$show_session
