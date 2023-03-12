@@ -78,12 +78,31 @@ main() {
   fixed_location="$(get_tmux_option "@catppuccin_fixed_location")"
   readonly fixed_location
 
+  # NOTE: Checking for value of time related vars
+  local time_enabled
+  time_enabled="$(get_tmux_option "@catppuccin_show_time" "on")"
+  readonly time_enabled
+  local show_military
+  show_military="$(get_tmux_option "@catppuccin_show_military" "off")"
+  readonly show_military
+  local show_day_month
+  show_day_month="$(get_tmux_option "@catppuccin_show_day_month" "off")"
+  local show_timezone
+  show_timezone="$(get_tmux_option "@catppuccin_show_timezone" false)"
+
+    # Set timezone unless hidden by configuration
+  case $show_timezone in
+    false)
+      timezone="";;
+    true)
+      timezone="#(date +%Z)";;
+  esac
+
   datafile=/tmp/.catppuccin-tmux-data
   # Start weather script in the background
   if [[ $weather_enabled == "on" ]]; then
     $PLUGIN_DIR/scripts/sleep_weather.sh $show_fahrenheit $show_location $fixed_location &
   fi
-
 
   # These variables are the defaults so that the setw and set calls are easier to parse.
   local show_directory
@@ -123,8 +142,8 @@ main() {
     right_column2=$show_ncspot_artist
     fi
 
-  # # NOTE: With the @catppuccin_weather_enabled set to on, we're going to
-  # # update the right_column3
+  # NOTE: With the @catppuccin_weather_enabled set to on, we're going to
+  # update the right_column3
   if [[ "${weather_enabled}" == "on" ]]; then
     while [ ! -f $datafile ]; do
       sleep 0.01
@@ -132,9 +151,24 @@ main() {
     right_column3=$show_weather
   fi
 
+  # NOTE: With the @catppuccin_show_time set to on, we're going to
+  # check the status of @catppuccin_military_time, and @catppuccin_day_month
+  if [[ $time_enabled == "on" ]]; then
+    if $show_day_month && $show_military ; then # military time and dd/mm
+      time="%a %d/%m %R ${timezone} "
+    elif $show_military; then # only military time
+      time="%a %m/%d %R ${timezone} "
+    elif $show_day_month; then # only dd/mm
+      time="%a %d/%m %I:%M %p ${timezone} "
+    else
+      time="%a %m/%d %I:%M %p ${timezone} "
+    fi
+    right_column4=$time
+  fi
+
   set status-left "${left_column1}${left_column2}"
 
-  set status-right "${right_column1} ${right_column2}${right_column3}"
+  set status-right "${right_column1} ${right_column2}${right_column3}${right_column4}"
 
   setw window-status-format "${window_status_format}"
   setw window-status-current-format "${window_status_current_format}"
