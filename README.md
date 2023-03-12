@@ -1,14 +1,3 @@
-# Catppuccin-Tmux
-This is a fork of the original Catppuccin theme for Tmux.
-
-## Added Features
-- Ncspot widget (Dependencies: ncspot, playerctl)
-- Weather widget
-- Time Widget
-
-## Removed Features
-- Window tabs
-
 <h3 align="center">
 	<img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/logos/exports/1544x1544_circle.png" width="100" alt="Logo"/><br/>
 	<img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/misc/transparent.png" height="30" width="0px"/>
@@ -25,6 +14,17 @@ This is a fork of the original Catppuccin theme for Tmux.
 <p align="center">
   <img src="./assets/preview.webp"/>
 </p>
+
+# Catppuccin-Tmux
+This is a fork of the original Catppuccin theme for Tmux.
+
+## Added Features
+- Ncspot widget (Dependencies: ncspot, playerctl)
+- Weather widget
+- Time Widget
+
+## Removed Features
+- Window tabs
 
 ## Themes
 
