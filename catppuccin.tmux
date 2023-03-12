@@ -156,8 +156,6 @@ main() {
     # NOTE: With the @catppuccin_show_time set to on, we're going to
     # check the status of @catppuccin_military_time, and @catppuccin_day_month
     if [[ "${time_enabled}" == "on" ]]; then
-      if [[ "${show_timezone}" == true ]]; then
-        timezone="#(date +%Z)";;
         if $show_day_month && $show_military ; then # military time and dd/mm
           time="%a %d/%m %R ${timezone} "
         elif $show_military; then # only military time
