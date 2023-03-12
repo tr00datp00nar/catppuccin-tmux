@@ -79,7 +79,7 @@ main() {
   readonly fixed_location
 
   # Start weather script in the background
-  if [[ $weather_enabled == "on" ]]; then
+  if [[ "${weather_enabled}" == "on" ]]; then
     ${PLUGIN_DIR}/scripts/sleep_weather.sh $show_fahrenheit $show_location $fixed_location &
   fi
 
