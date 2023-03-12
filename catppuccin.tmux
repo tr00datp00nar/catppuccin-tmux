@@ -134,7 +134,7 @@ main() {
 
   set status-left "${left_column1}${left_column2}"
 
-  set status-right "${right_column1} ${right_column2} ${right_column3}"
+  set status-right "${right_column1} ${right_column2}${right_column3}"
 
   setw window-status-format "${window_status_format}"
   setw window-status-current-format "${window_status_current_format}"
