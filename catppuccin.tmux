@@ -112,11 +112,10 @@ main() {
   local show_weather
   readonly show_weather="#[fg=$thm_orange,bg=$thm_bg,nobold,nounderscore,noitalics]#[fg=thm_bg,bg=thm_orange]#(cat $datafile) #[fg=$thm_orange,bg=$thm_bg,nobold,nounderscore,noitalics]"
 
-  # Left column 1 by default shows the Window name.
-  local left_column1=$show_window
-
-  # Right column 2 by default shows the current Session name.
-  local left_column2=$show_session
+  # Right column 1 by default shows the current Session name.
+  local left_column1=$show_session
+  # Left column 2 by default shows the Window name.
+  local left_column2=$show_window
 
   # Window status by default shows the current directory basename.
   local window_status_format=$show_directory_in_window_status
