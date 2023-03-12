@@ -125,6 +125,8 @@ main() {
   readonly show_ncspot_artist="#[fg=$thm_bg,bg=$thm_blue,nobold,nounderscore,noitalics] #[fg=$thm_bg=$thm_blue]#(${PLUGIN_DIR}/scripts/get_artist.sh) #[fg=$thm_blue,bg=$thm_bg,nobold,nounderscore,noitalics]"
   local show_weather
   readonly show_weather="#[fg=$thm_yellow,bg=$thm_bg,nobold,nounderscore,noitalics]#[fg=$thm_gray,bg=$thm_yellow]#(cat $datafile) #[fg=$thm_yellow,bg=$thm_bg,nobold,nounderscore,noitalics]"
+  local show_time
+  readonly show_time="#[fg=$thm_teal,bg=$thm_bg,nobold,nounderscore,noitalics]#[fg=$thm_gray,bg=$thm_teal]#($time) #[fg=$thm_teal,bg=$thm_bg,nobold,nounderscore,noitalics]"
 
   # Right column 1 by default shows the current Session name.
   local left_column1=$show_session
