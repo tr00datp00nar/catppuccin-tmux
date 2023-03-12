@@ -81,7 +81,7 @@ main() {
   datafile=/tmp/.catppuccin-tmux-data
   # Start weather script in the background
   if [[ $weather_enabled == "on" ]]; then
-    ${PLUGIN_DIR}/scripts/sleep_weather.sh $show_fahrenheit $show_location $fixed_location &
+    $PLUGIN_DIR/scripts/sleep_weather.sh $show_fahrenheit $show_location $fixed_location &
   fi
 
 
