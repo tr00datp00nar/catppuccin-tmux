@@ -106,21 +106,6 @@ main() {
     $PLUGIN_DIR/scripts/sleep_weather.sh $show_fahrenheit $show_location $fixed_location &
   fi
 
-    # NOTE: With the @catppuccin_show_time set to on, we're going to
-  # check the status of @catppuccin_military_time, and @catppuccin_day_month
-  if [[ "${time_enabled}" == "on" ]]; then
-    if $show_day_month && $show_military ; then # military time and dd/mm
-      time="%a %d/%m %R ${timezone} "
-    elif $show_military; then # only military time
-      time="%a %m/%d %R ${timezone} "
-    elif $show_day_month; then # only dd/mm
-      time="%a %d/%m %I:%M %p ${timezone} "
-    else
-      time="%a %m/%d %I:%M %p ${timezone} "
-    fi
-    right_column4=$show_time
-  fi
-
   # These variables are the defaults so that the setw and set calls are easier to parse.
   local show_directory
   readonly show_directory="#[fg=$thm_pink,bg=$thm_bg,nobold,nounderscore,noitalics]#[fg=$thm_bg,bg=$thm_pink,nobold,nounderscore,noitalics]  #[fg=$thm_bg,bg=$thm_pink] #{b:pane_current_path} #{?client_prefix,#[fg=$thm_red]"
@@ -168,6 +153,21 @@ main() {
       sleep 0.01
     done
     right_column3=$show_weather
+  fi
+
+    # NOTE: With the @catppuccin_show_time set to on, we're going to
+  # check the status of @catppuccin_military_time, and @catppuccin_day_month
+  if [[ "${time_enabled}" == "on" ]]; then
+    if $show_day_month && $show_military ; then # military time and dd/mm
+      time="%a %d/%m %R ${timezone} "
+    elif $show_military; then # only military time
+      time="%a %m/%d %R ${timezone} "
+    elif $show_day_month; then # only dd/mm
+      time="%a %d/%m %I:%M %p ${timezone} "
+    else
+      time="%a %m/%d %I:%M %p ${timezone} "
+    fi
+    right_column4=$show_time
   fi
 
   set status-left "${left_column1}${left_column2}"
