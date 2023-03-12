@@ -67,7 +67,7 @@ main() {
 
   # NOTE: Checking for the value of weather related vars
   local weather_enabled
-  weather_enabled="$(get_tmux_option "@catppuccin_weather_enabled" "off")"
+  weather_enabled="$(get_tmux_option "@catppuccin_weather_enabled" "on")"
   readonly weather_enabled
   local show_fahrenheit
   show_fahrenheit="$(get_tmux_option "@catppuccin_show_fahrenheit" true)"
@@ -126,9 +126,9 @@ main() {
   # NOTE: With the @catppuccin_weather_enabled set to on, we're going to
   # update the right_column3
   if [[ "${weather_enabled}" == "on" ]]; then
-    while [ ! -f $datafile ]; do
-      sleep 0.01
-    done
+    # while [ ! -f $datafile ]; do
+    #   sleep 0.01
+    # done
     right_column3=$show_weather
   fi
 
