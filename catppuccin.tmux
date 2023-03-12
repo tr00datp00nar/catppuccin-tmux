@@ -112,7 +112,7 @@ main() {
   local show_window
   readonly show_window="#[fg=$thm_pink,bg=$thm_bg,nobold,nounderscore,noitalics]#[fg=$thm_bg,bg=$thm_pink,nobold,nounderscore,noitalics] #[fg=$thm_bg,bg=$thm_pink] #W #[fg=$thm_pink,bg=$thm_gray,nobold,nounderscore,noitalics]#{?client_prefix,#[fg=$thm_red]"
   local show_session
-  readonly show_session="#[fg=$thm_green]#{?client_prefix,#[bg=$thm_red],#[fg=$thm_green])#[bg=$thm_gray]#{?client_prefix,#[bg=$thm_red],#[bg=$thm_green]}#[fg=$thm_bg] #[fg=$thm_bg,bg=$thm_green] #S #[fg=$thm_green,bg=$thm_gray,nobold,nounderscore,noitalics]"
+  readonly show_session="#[fg=$thm_green]#[bg=$thm_gray]#{?client_prefix,#[bg=$thm_red],#[fg=$thm_green])#{?client_prefix,#[bg=$thm_red],#[bg=$thm_green]}#[fg=$thm_bg] #[fg=$thm_bg,bg=$thm_green] #S #[fg=$thm_green,bg=$thm_gray,nobold,nounderscore,noitalics]"
   local show_directory_in_window_status
   readonly show_directory_in_window_status="#[fg=$thm_fg,bg=$thm_gray] #I #[fg=$thm_fg,bg=$thm_gray] #{b:pane_current_path} "
   local show_directory_in_window_status_current
