@@ -114,9 +114,9 @@ main() {
   local show_session
   readonly show_session="#{?client_prefix,#[bg=$thm_red],#[bg=$thm_green]}#[fg=$thm_bg]  #[fg=$thm_bg,bg=$thm_green] #S #[fg=$thm_green,bg=$thm_gray,nobold,nounderscore,noitalics]"
   local show_directory_in_window_status
-  readonly show_directory_in_window_status="#[fg=$thm_fg,bg=$thm_gray] #I #[fg=$thm_fg,bg=$thm_gray] #{b:pane_current_command} "
-  local show_directory_in_window_status_current
-  readonly show_directory_in_window_status_current="#[fg=$thm_orange,bg=$thm_bg,nobold,nounderscore,noitalics]#[fg=$thm_bg,bg=$thm_orange] #I #[fg=$thm_bg,bg=$thm_orange] #{b:pane_current_command} #[fg=$thm_orange,bg=$thm_bg,nobold,nounderscore,noitalics]"
+  readonly show_command_in_window_status="#[fg=$thm_fg,bg=$thm_gray] #I #[fg=$thm_fg,bg=$thm_gray] #{b:pane_current_command} "
+  local show_command_in_window_status_current
+  readonly show_command_in_window_status_current="#[fg=$thm_orange,bg=$thm_bg,nobold,nounderscore,noitalics]#[fg=$thm_bg,bg=$thm_orange] #I #[fg=$thm_bg,bg=$thm_orange] #{b:pane_current_command} #[fg=$thm_orange,bg=$thm_bg,nobold,nounderscore,noitalics]"
   local show_window_in_window_status
   readonly show_window_in_window_status="#[fg=$thm_bg,bg=$thm_blue] #W #[fg=$thm_bg,bg=$thm_blue] #I#[fg=$thm_blue,bg=$thm_bg]#[fg=$thm_fg,bg=$thm_bg,nobold,nounderscore,noitalics] "
   local show_window_in_window_status_current
@@ -131,11 +131,12 @@ main() {
   # Right column 1 by default shows the current Session name.
   local left_column1=$show_session
   # Left column 2 by default shows the Window name.
-  local left_column2=$show_window
+  # local left_column2=$show_window
 
-  # Window status by default shows the current directory basename.
-  local window_status_format=$show_directory_in_window_status
-  local window_status_current_format=$show_directory_in_window_status_current
+  # Window status by default shows the current window.
+  # TODO: Create a way to toggle between showing window, command, or path in the window-status.
+  local window_status_format=$show_window_in_window_status
+  local window_status_current_format=$show_window_in_window_status_current
 
   # NOTE: With the @catppuccin_ncspot_enabled set to on, we're going to
   # update the right column1.
