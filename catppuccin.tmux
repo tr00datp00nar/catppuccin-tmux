@@ -166,7 +166,7 @@ main() {
       time="%a %m/%d %I:%M %p ${timezone} "
     fi
     local show_time
-    readonly show_time="#[fg=$thm_teal,bg=$thm_bg,nobold,nounderscore,noitalics]#[fg=$thm_gray,bg=$thm_teal]$time #[fg=$thm_teal,bg=$thm_bg,nobold,nounderscore,noitalics]"
+    readonly show_time="#[fg=$thm_cyan,bg=$thm_bg,nobold,nounderscore,noitalics]#[fg=$thm_gray,bg=$thm_cyan]$time#[fg=$thm_cyan,bg=$thm_bg,nobold,nounderscore,noitalics]"
     right_column4=$show_time
   fi
 
