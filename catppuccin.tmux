@@ -78,11 +78,11 @@ main() {
   fixed_location="$(get_tmux_option "@catppuccin_fixed_location")"
   readonly fixed_location
 
-  datafile=/tmp/.catppuccin-tmux-data
-  # Start weather script in the background
-  if [[ $weather_enabled == "on" ]]; then
-    $PLUGIN_DIR/scripts/sleep_weather.sh $show_fahrenheit $show_location $fixed_location &
-  fi
+  # datafile=/tmp/.catppuccin-tmux-data
+  # # Start weather script in the background
+  # if [[ $weather_enabled == "on" ]]; then
+  #   $PLUGIN_DIR/scripts/sleep_weather.sh $show_fahrenheit $show_location $fixed_location &
+  # fi
 
 
   # These variables are the defaults so that the setw and set calls are easier to parse.
@@ -104,10 +104,10 @@ main() {
   readonly show_ncspot_track_title="#[fg=$thm_blue,bg=$thm_bg,nobold,nounderscore,noitalics] #[fg=$thm_bg,bg=$thm_blue,nobold,nounderscore,noitalics] #[fg=$thm_bg,bg=$thm_blue] #(${PLUGIN_DIR}/scripts/get_track_title.sh)"
   local show_ncspot_artist
   readonly show_ncspot_artist="#[fg=$thm_bg,bg=$thm_blue,nobold,nounderscore,noitalics] #[fg=$thm_bg=$thm_blue]#(${PLUGIN_DIR}/scripts/get_artist.sh) #[fg=$thm_blue,bg=$thm_bg,nobold,nounderscore,noitalics]"
-  local forecast="#(cat $datafile)"
-  readonly forecast
-  local show_weather
-  readonly show_weather="#[fg=$thm_orange,bg=$thm_bg,nobold,nounderscore,noitalics]#[fg=thm_bg,bg=thm_orange]#(${forecast}) #[fg=$thm_orange,bg=$thm_bg,nobold,nounderscore,noitalics]"
+  # local forecast="#(cat $datafile)"
+  # readonly forecast
+  # local show_weather
+  # readonly show_weather="#[fg=$thm_orange,bg=$thm_bg,nobold,nounderscore,noitalics]#[fg=thm_bg,bg=thm_orange]#(${forecast}) #[fg=$thm_orange,bg=$thm_bg,nobold,nounderscore,noitalics]"
 
   # Right column 1 by default shows the current Session name.
   local left_column1=$show_session
@@ -125,14 +125,14 @@ main() {
     right_column2=$show_ncspot_artist
     fi
 
-  # NOTE: With the @catppuccin_weather_enabled set to on, we're going to
-  # update the right_column3
-  if [[ "${weather_enabled}" == "on" ]]; then
-    while [ ! -f $datafile ]; do
-      sleep 0.01
-    done
-    right_column3=$show_weather
-  fi
+  # # NOTE: With the @catppuccin_weather_enabled set to on, we're going to
+  # # update the right_column3
+  # if [[ "${weather_enabled}" == "on" ]]; then
+  #   while [ ! -f $datafile ]; do
+  #     sleep 0.01
+  #   done
+  #   right_column3=$show_weather
+  # fi
 
   set status-left "${left_column1}${left_column2}"
 
