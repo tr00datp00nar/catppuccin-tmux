@@ -165,7 +165,7 @@ main() {
     else
       time="%a %m/%d %I:%M %p ${timezone} "
     fi
-    right_column4=$time
+    right_column4=$show_time
   fi
 
   set status-left "${left_column1}${left_column2}"
