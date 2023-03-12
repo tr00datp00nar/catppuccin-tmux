@@ -1,3 +1,14 @@
+# Catppuccin-Tmux
+This is a fork of the original Catppuccin theme for Tmux.
+
+## Added Features
+- Ncspot widget (Dependencies: ncspot, playerctl)
+- Weather widget
+- Time Widget
+
+## Removed Features
+- Window tabs
+
 <h3 align="center">
 	<img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/logos/exports/1544x1544_circle.png" width="100" alt="Logo"/><br/>
 	<img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/misc/transparent.png" height="30" width="0px"/>
@@ -27,10 +38,10 @@
 ### TPM
 
 1. Install [TPM](https://github.com/tmux-plugins/tpm)
-2. Add the Catppuccin plugin:
+2. Add the forked Catppuccin-Tmux plugin:
 
 ```bash
-set -g @plugin 'catppuccin/tmux'
+set -g @plugin 'tr00datp00nar/catppuccin-tmux'
 # ...alongside
 set -g @plugin 'tmux-plugins/tpm'
 ```
@@ -52,18 +63,29 @@ All flavours support certain levels of customization that match our [Catppuccin
 Style Guide][style-guide]. To add these customizations, add any of the following
 options to your Tmux configuration.
 
-##### Enable window tabs
-
-By default, the theme places the `window-status` in the `status-right`. With
-`@catppuccin_window_tabs_enabled` set to `on`, the theme will place the
-directory within the `status-right` and move the window names to the
-`window-status` format variables.
+##### Widget Configuration Defaults
 
 ```sh
-set -g @catppuccin_window_tabs_enabled on # or off to disable window_tabs
+set -g @catppuccin_show_location false
+set -g @catppuccin_show_fahrenheit false
+set -g @catppuccin_fixed_location
+set -g @catppuccin_show_time "on"
+set -g @catppuccin_show_military "off"
+set -g @catppuccin_show_day_month "off" # Set to "on" to show date as DAY/MONTH instead of MONTH/DAY
+set -g @catppuccin_show_timezone false
+set -g @catppuccin_ncspot_enabled "off"
 ```
 
+###### Show location in weather widget
+
+Set `@catppuccin_show_location true` to allow the theme to find your location with a call to https://ipinfo.io and append it to the forecast.
+Set `@catppuccin_fixed_location [LOCATION]` to set a fixed location for the widget. Uses https://wttr.in
+
 [style-guide]: https://github.com/catppuccin/catppuccin/blob/main/docs/style-guide.md
+
+## Create a custom color scheme
+
+While we are pretty sure you will enjoy our selection of color schemes, if you would like to customize your own setup, you can do so by adding a new `.tmuxtheme` file to the plugin folder (`/path/to/tmux/configuration/plugins/catppuccin-tmux/`) with your custom colors.
 
 ## 💝 Thanks to
 
