@@ -134,8 +134,8 @@ main() {
   local left_column2=$show_window
 
   # Window status by default shows the current directory basename.
-  # local window_status_format=$show_directory_in_window_status
-  # local window_status_current_format=$show_directory_in_window_status_current
+  local window_status_format=$show_directory_in_window_status
+  local window_status_current_format=$show_directory_in_window_status_current
 
   # NOTE: With the @catppuccin_ncspot_enabled set to on, we're going to
   # update the right column1.
