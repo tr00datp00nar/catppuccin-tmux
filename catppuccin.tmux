@@ -126,9 +126,9 @@ main() {
   # NOTE: With the @catppuccin_weather_enabled set to on, we're going to
   # update the right_column3
   if [[ "${weather_enabled}" == "on" ]]; then
-    # while [ ! -f $datafile ]; do
-    #   sleep 0.01
-    # done
+    while [ ! -f $datafile ]; do
+      sleep 0.01
+    done
     right_column3=$show_weather
   fi
 
