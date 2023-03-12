@@ -27,8 +27,6 @@ setw() {
 }
 
 main() {
-  datafile=/tmp/.catppuccin-tmux-data
-
   local theme
   theme="$(get_tmux_option "@catppuccin_flavour" "mocha")"
 
@@ -80,6 +78,7 @@ main() {
   fixed_location="$(get_tmux_option "@catppuccin_fixed_location")"
   readonly fixed_location
 
+  datafile=/tmp/.catppuccin-tmux-data
   # Start weather script in the background
   if [[ $weather_enabled == "on" ]]; then
     $PLUGIN_DIR/scripts/sleep_weather.sh $show_fahrenheit $show_location $fixed_location &
