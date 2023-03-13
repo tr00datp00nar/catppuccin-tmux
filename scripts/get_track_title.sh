@@ -1,17 +1,11 @@
 #!/usr/bin/env bash
 
+status="$(playerctl --player=ncspot metadata -f "{{ status }})"
 full_title="$(playerctl --player=ncspot metadata -f "{{ title }}")"
 
-# BUG:
-# Fails when a song title includes hyphenated words instead of hyphens for separation of
-#           [title - extra_info]
-# Need to handle cases such as "Semi-Charmed Life" where the hyphen is not
-# actually a delimeter. We are only interested in hyphens such as "Assassins - Remix"
-# Would like to use a regex such as "/( - )|( \(\S)/" if possible.
-title=$(printf "%s" "$full_title" | cut -d"(" -f1)
+# Trims track title from any opening parentheses.
+title=$(printf "%s" "$full_title" | sed -re 's/\(.*\).*$//)'
 
-if [[ $(playerctl --player=ncspot metadata -f "{{status}}") =~ Playing ]]; then
-    cmd=$(playerctl --player=ncspot metadata -f "$title")
+if [[ $status =~ Playing ]]; then
+    printf "%s "$title"
 fi
-
-printf "%s" "$cmd"
