@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-status="$(playerctl --player=ncspot metadata -f "{{ status }})"
+status="$(playerctl --player=ncspot metadata -f "{{ status }}")"
 full_title="$(playerctl --player=ncspot metadata -f "{{ title }}")"
 
 # Trims track title from any opening parentheses.
