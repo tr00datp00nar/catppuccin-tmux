@@ -7,5 +7,5 @@ full_title="$(playerctl --player=ncspot metadata -f "{{ title }}")"
 # title=$(echo "$full_title" | sed -re 's/\(.*\).*$//')
 
 if [[ $status =~ Playing ]]; then
-  echo "$full_title" | sed -re 's/\(.*\).*$//'
+  echo $full_title | sed -re 's/\(.*\).*$//'
 fi
