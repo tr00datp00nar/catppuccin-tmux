@@ -106,13 +106,16 @@ main() {
   # Start weather script in the background
   if [[ $weather_enabled == "on" ]]; then
     if [[ -n $home_location ]]; then
-      if [[ $(arp 192.168.1.1 | awk NR==2 '{print $3}') =~ "(00:1b:21:a8:03:34)" ]]; then
-        $PLUGIN_DIR/scripts/sleep_weather.sh $show_fahrenheit $show_location $home_location &
-      fi
-    else
-      $PLUGIN_DIR/scripts/sleep_weather.sh $show_fahrenheit $show_location $fixed_location &
+      netCheck=$([[ arp 192.168.1.1 | awk NR==2 '{print $3}' =~ "(00:1b:21:a8:03:34)" ]])
+      case $netCheck in
+        true)
+          $PLUGIN_DIR/scripts/sleep_weather.sh $show_fahrenheit $show_location $home_location &
+          ;;
+        false)
+          $PLUGIN_DIR/scripts/sleep_weather.sh $show_fahrenheit $show_location $fixed_location &
+          ;;
+      esac
     fi
-      $PLUGIN_DIR/scripts/sleep_weather.sh $show_fahrenheit $show_location $fixed_location &
   fi
 
   # These variables are the defaults so that the setw and set calls are easier to parse.
