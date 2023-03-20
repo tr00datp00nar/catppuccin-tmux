@@ -76,7 +76,6 @@ main() {
   show_location="$(get_tmux_option "@catppuccin_show_location" false)"
   local fixed_location
   fixed_location="$(get_tmux_option "@catppuccin_fixed_location")"
-  readonly fixed_location
 
   # NOTE: Checking for value of time related vars
   local time_enabled
