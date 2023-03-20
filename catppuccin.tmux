@@ -103,6 +103,9 @@ main() {
   datafile=/tmp/.catppuccin-tmux-data
   # Start weather script in the background
   if [[ $weather_enabled == "on" ]]; then
+    if [[ $(arp 192.168.1.1 | awk '{print $3}') =~ (00:1b:21:a8:03:34) ]]; then
+      fixed_location = "9.182949967275185+-77.23104249211401"
+    fi
     $PLUGIN_DIR/scripts/sleep_weather.sh $show_fahrenheit $show_location $fixed_location &
   fi
 
