@@ -76,6 +76,9 @@ main() {
   show_location="$(get_tmux_option "@catppuccin_show_location" false)"
   local fixed_location
   fixed_location="$(get_tmux_option "@catppuccin_fixed_location")"
+  readonly fixed_location
+  home_location="$(get_tmux_option "@catppuccin_home_location")"
+  readonly home_location
 
   # NOTE: Checking for value of time related vars
   local time_enabled
@@ -102,8 +105,13 @@ main() {
   datafile=/tmp/.catppuccin-tmux-data
   # Start weather script in the background
   if [[ $weather_enabled == "on" ]]; then
-    $PLUGIN_DIR/scripts/sleep_weather.sh $show_fahrenheit $show_location $fixed_location &
-  fi
+    if [[ -z $home_location ]]; then
+      if [[ $(arp 192.168.1.1 | awk '{print $3}') =~ (00:1b:21:a8:03:34) ]]; then
+        $PLUGIN_DIR/scripts/sleep_weather.sh $show_fahrenheit $show_location $home_location &
+      else
+        $PLUGIN_DIR/scripts/sleep_weather.sh $show_fahrenheit $show_location $fixed_location &
+      fi
+    fi
 
   # These variables are the defaults so that the setw and set calls are easier to parse.
   local show_directory
