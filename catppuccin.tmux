@@ -112,6 +112,7 @@ main() {
     else
       $PLUGIN_DIR/scripts/sleep_weather.sh $show_fahrenheit $show_location $fixed_location &
     fi
+  fi
 
   # These variables are the defaults so that the setw and set calls are easier to parse.
   local show_directory
