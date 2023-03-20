@@ -106,7 +106,7 @@ main() {
   # Start weather script in the background
   if [[ $weather_enabled == "on" ]]; then
     if [[ -n $home_location ]]; then
-      netCheck=`[[ arp 192.168.1.1 | awk NR==2 '{print $3}' =~ "(00:1b:21:a8:03:34)" ]]`
+      netCheck=`[[ arp 192.168.1.1 | awk '{print $3}' =~ "(00:1b:21:a8:03:34)" ]]`
       case "$netCheck" in
         true)
           $PLUGIN_DIR/scripts/sleep_weather.sh $show_fahrenheit $show_location $home_location &
