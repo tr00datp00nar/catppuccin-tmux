@@ -94,18 +94,20 @@ main() {
   show_timezone="$(get_tmux_option "@catppuccin_show_timezone" false)"
   readonly show_timezone
 
-    # Set timezone unless hidden by configuration
+  # Set timezone unless hidden by configuration
   case $show_timezone in
-    false)
-      timezone="";;
-    true)
-      timezone="#(date +%Z)";;
+  false)
+    timezone=""
+    ;;
+  true)
+    timezone="#(date +%Z)"
+    ;;
   esac
 
   datafile=/tmp/.catppuccin-tmux-data
   # Start weather script in the background
   if [[ $weather_enabled == "on" ]]; then
-          $PLUGIN_DIR/scripts/sleep_weather.sh $show_fahrenheit $show_location $fixed_location &
+    $PLUGIN_DIR/scripts/sleep_weather.sh $show_fahrenheit $show_location $fixed_location &
   #   if [[ -n $home_location ]]; then
   #     netCheck=`[[ arp 192.168.1.1 | awk  NR==2 | awk '{ print $3 }' =~ "(00:1b:21:a8:03:34)" ]]`
   #     case "$netCheck" in
@@ -137,10 +139,13 @@ main() {
   local show_window_in_window_status_current
   readonly show_window_in_window_status_current="#[fg=$thm_pink,bg=$thm_bg,nobold,nounderscore,noitalics]#[fg=$thm_bg,bg=$thm_pink] #W #[fg=$thm_bg,bg=$thm_pink] #I#[fg=$thm_pink,bg=$thm_bg]#[fg=$thm_fg,bg=$thm_bg,nobold,nounderscore,noitalics] "
 
-  local show_ncspot_track_title
-  readonly show_ncspot_track_title="#[fg=$thm_green,bg=$thm_bg,nobold,nounderscore,noitalics] #[fg=$thm_bg,bg=$thm_green,nobold,nounderscore,noitalics] #[fg=$thm_bg,bg=$thm_green] #(${PLUGIN_DIR}/scripts/get_track_title.sh)"
-  local show_ncspot_artist
-  readonly show_ncspot_artist="#[fg=$thm_bg,bg=$thm_green,nobold,nounderscore,noitalics] #[fg=$thm_bg=$thm_green]#(${PLUGIN_DIR}/scripts/get_artist.sh) #[fg=$thm_green,bg=$thm_bg,nobold,nounderscore,noitalics]"
+  # local show_ncspot_track_title
+  # readonly show_ncspot_track_title="#[fg=$thm_green,bg=$thm_bg,nobold,nounderscore,noitalics] #[fg=$thm_bg,bg=$thm_green,nobold,nounderscore,noitalics] #[fg=$thm_bg,bg=$thm_green] #(${PLUGIN_DIR}/scripts/get_track_title.sh)"
+  # local show_ncspot_artist
+  # readonly show_ncspot_artist="#[fg=$thm_bg,bg=$thm_green,nobold,nounderscore,noitalics] #[fg=$thm_bg=$thm_green]#(${PLUGIN_DIR}/scripts/get_artist.sh) #[fg=$thm_green,bg=$thm_bg,nobold,nounderscore,noitalics]"
+  local show_playerctl_meta
+  readonly show_playerctl_meta="#[fg=$thm_green,bg=$thm_bg,nobold,nounderscore,noitalics] #[fg=$thm_bg,bg=$thm_green,nobold,nounderscore,noitalics] #[fg=$thm_bg,bg=$thm_green] #(${PLUGIN_DIR}/scripts/ncspot.sh) #[fg=$thm_green,bg=$thm_bg,nobold,nounderscore,noitalics]"
+
   local show_weather
   readonly show_weather="#[fg=$thm_yellow,bg=$thm_bg,nobold,nounderscore,noitalics]#[fg=$thm_gray,bg=$thm_yellow]#(cat $datafile) #[fg=$thm_yellow,bg=$thm_bg,nobold,nounderscore,noitalics]"
 
@@ -157,9 +162,10 @@ main() {
   # NOTE: With the @catppuccin_ncspot_enabled set to on, we're going to
   # update the right column1.
   if [[ "${ncspot_enabled}" == "on" ]]; then
-    right_column1=$show_ncspot_track_title
-    right_column2=$show_ncspot_artist
-    fi
+    right_column1=$show_playerctl_meta
+    # right_column1=$show_ncspot_track_title
+    # right_column2=$show_ncspot_artist
+  fi
 
   # NOTE: With the @catppuccin_weather_enabled set to on, we're going to
   # update the right_column3
@@ -170,26 +176,26 @@ main() {
     right_column3=$show_weather
   fi
 
-    # NOTE: With the @catppuccin_show_time set to on, we're going to
-    # check the status of @catppuccin_military_time, and @catppuccin_day_month
-    if [[ "${time_enabled}" == "on" ]]; then
-        if $show_day_month && $show_military ; then # military time and dd/mm
-          time="%a %d/%m %R ${timezone} "
-        elif $show_military; then # only military time
-          time="%a %m/%d %R ${timezone} "
-        elif $show_day_month; then # only dd/mm
-          time="%a %d/%m %I:%M %p ${timezone} "
-        else
-          time="%a %m/%d %I:%M %p ${timezone} "
-        fi
-      local show_time
-      readonly show_time="#[fg=$thm_blue,bg=$thm_bg,nobold,nounderscore,noitalics]#[fg=$thm_gray,bg=$thm_blue]$time"
-      right_column4=$show_time
+  # NOTE: With the @catppuccin_show_time set to on, we're going to
+  # check the status of @catppuccin_military_time, and @catppuccin_day_month
+  if [[ "${time_enabled}" == "on" ]]; then
+    if $show_day_month && $show_military; then # military time and dd/mm
+      time="%a %d/%m %R ${timezone} "
+    elif $show_military; then # only military time
+      time="%a %m/%d %R ${timezone} "
+    elif $show_day_month; then # only dd/mm
+      time="%a %d/%m %I:%M %p ${timezone} "
+    else
+      time="%a %m/%d %I:%M %p ${timezone} "
     fi
+    local show_time
+    readonly show_time="#[fg=$thm_blue,bg=$thm_bg,nobold,nounderscore,noitalics]#[fg=$thm_gray,bg=$thm_blue]$time"
+    right_column4=$show_time
+  fi
 
   set status-left "${left_column1}${left_column2}"
 
-  set status-right "${right_column1} ${right_column2}${right_column3}${right_column4}"
+  set status-right "${right_column1} ${right_column3}${right_column4}"
 
   setw window-status-format "${window_status_format}"
   setw window-status-current-format "${window_status_current_format}"
